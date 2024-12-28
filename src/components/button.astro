@@ -1,0 +1,66 @@
+---
+const { type } = Astro.props;
+
+let buttonAttributes = {};
+let style = "";
+let label = "";
+switch (type) {
+  case "whatsapp":
+    buttonAttributes = {
+      "data-type": "whatsapp",
+      "aria-label": "Contact via WhatsApp",
+    };
+    style = "background-color: #25D366;";
+    label = "WhatsApp me now!";
+    break;
+  case "call":
+    buttonAttributes = {
+      "data-type": "call",
+      "aria-label": "Contact via Telephone",
+    };
+    style = "background-color: #0077cc;";
+    label = "Call me now!";
+    break;
+  default:
+    buttonAttributes = {
+      "data-type": "email",
+      "aria-label": "Contact via email",
+    };
+    style = "background-color: #0077cc;";
+    label = "Email me now!";
+    break;
+}
+---
+
+<button {...buttonAttributes} {style} data-cta-button>{label}</button>
+
+<script>
+  const buttons = document.querySelectorAll("[data-cta-button]");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const type = button.getAttribute("data-type");
+      switch (type) {
+        case "whatsapp":
+          console.log("Contact via WhatsApp!");
+          break;
+        case "telephone":
+          console.log("Contact via Telephone!");
+          break;
+        default:
+          console.log("Contact via email!");
+          break;
+      }
+    });
+  });
+</script>
+
+<style>
+  button {
+    background-color: #0077cc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
