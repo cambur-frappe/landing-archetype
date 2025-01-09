@@ -1,5 +1,5 @@
 ---
-const { type } = Astro.props;
+const { type, class: className } = Astro.props;
 
 let buttonAttributes = {};
 let style = "";
@@ -27,12 +27,12 @@ switch (type) {
       "aria-label": "Contact via email",
     };
     style = "background-color: #0077cc;";
-    label = "Email me now!";
+    label = "Solicitar presupuesto";
     break;
 }
 ---
 
-<button {...buttonAttributes} {style} data-cta-button>{label}</button>
+<button {...buttonAttributes} class={className} {style} data-cta-button>{label}</button>
 
 <script>
   const buttons = document.querySelectorAll("[data-cta-button]");
@@ -60,7 +60,11 @@ switch (type) {
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+  }
+
+  button:hover {
+    transition: background-color 0.3s;
+    background-color: #005aac !important;
   }
 </style>
