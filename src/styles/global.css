@@ -6,13 +6,16 @@ a,
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent;
-  @apply bg-gradient-to-br from-blue-400 via-purple-400 to-pink-500;
+  background: linear-gradient(90deg, #f6ce46, #d4a016, #b5840c);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .button {
-  background-color: #007bff;
-  color: white;
+  background-color: #f6ce46;
+  color: black;
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -23,7 +26,7 @@ a,
 .button:hover {
   color: white;
   transition: background-color 0.3s;
-  background-color: #0056b3;
+  background-color: #b5840c;
 }
 
 .button:disabled {

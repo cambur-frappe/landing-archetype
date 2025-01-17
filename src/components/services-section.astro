@@ -3,52 +3,38 @@ import type { ServiceItem } from "~/types";
 
 const services: Array<ServiceItem> = [
   {
-    title: "Diseño Web",
+    title: "Limpieza",
     description:
-      "Diseñamos tu sitio web a medida, con un diseño único y personalizado.",
-    image: "/src/assets/splash-bg.webp",
+      "Expertos en limpieza profesional para comercios, cristales en altura, comunidades y hogares, garantizando espacios impecables con tecnología avanzada.",
+    image: "/src/assets/splash-bg.jpeg",
   },
   {
-    title: "Desarrollo de Aplicaciones",
+    title: "Jardinería",
     description:
-      "Creamos aplicaciones móviles y de escritorio adaptadas a tus necesidades.",
-    image: "/src/assets/splash-bg.webp",
+      "Mantenimiento y diseño de jardines para parques, comunidades y particulares, creando espacios verdes cuidados y atractivos.",
+    image: "/src/assets/diseno-jardin.jpeg",
   },
   {
-    title: "Marketing Digital",
+    title: "Piscinas",
     description:
-      "Te ayudamos a posicionar tu marca y aumentar tu presencia en línea.",
-    image: "/src/assets/splash-bg.webp",
+      "Limpieza, mantenimiento, instalación y reparación de equipos para piscinas, garantizando su óptimo estado y funcionamiento.",
+    image: "/src/assets/piscina.jpg",
   },
-  {
-    title: "SEO",
-    description:
-      "Mejoramos el posicionamiento de tu sitio web en los motores de búsqueda.",
-    image: "/src/assets/splash-bg.webp",
-  },
-  {
-    title: "Consultoría Tecnológica",
-    description:
-      "Ofrecemos asesoramiento experto para optimizar tus procesos tecnológicos.",
-    image: "/src/assets/splash-bg.webp",
-  },
-  {
-    title: "E-commerce",
-    description:
-      "Desarrollamos tiendas en línea para que puedas vender tus productos.",
-    image: "/src/assets/splash-bg.webp",
-  }
 ];
 ---
 
 <div id="services" class="flex flex-col items-center gap-4">
-  <h2 class="gradient-text text-center font-extrabold tracking-tight text-6xl">Servicios</h2>
-  <p class="text-center max-w-lg font-extrabold text-2xl">Estos son los servicios que te ofrecemos.</p>
-  <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <h2 class="gradient-text text-center font-extrabold tracking-tight text-6xl">
+    Servicios
+  </h2>
+  <p class="max-w-lg text-center font-extrabold text-2xl">
+    Estos son los servicios que te ofrecemos.
+  </p>
+  <ul class="grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
     {
       services.map(({ title, description, image }) => (
         <li class="flex flex-col items-center gap-4 border border-default bg-offset p-6">
-          <img src={image} alt={title} />
+            <img src={image} alt={title} class="w-full h-48 object-cover" />
           <p class="text-center font-extrabold">{title}</p>
           <p class="text-center text-offset text-sm">{description}</p>
         </li>

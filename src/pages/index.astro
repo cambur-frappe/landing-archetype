@@ -9,9 +9,9 @@ import OurWorkSection from "~/components/our-work-section.astro";
 import "~/styles/index.css";
 
 const { generator, site } = Astro;
-const image = new URL("social.jpg", site);
+const image = new URL("/src/icons/logock.svg", site);
 const description =
-  "Build fast websites, faster. Astro is a new kind of site builder for the modern web. Lightning-fast performance meets powerful developer experience.";
+  "Empresa de limpieza y mantenimiento. Nos especializamos en limpieza de grandes superficies, fachadas, diseño de jardines y mantenimiento de piscinas.";
 ---
 
 <!doctype html>
@@ -19,10 +19,10 @@ const description =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/src/icons/frappe.svg" type="image/svg+xml" />
+    <link rel="icon" href="/src/assets/logock.png" type="image/svg+xml" />
     <meta name="generator" content={generator} />
 
-    <title>Landing Archetype</title>
+    <title>C&K Limpieza y Mantenimiento</title>
     <meta name="description" content={description} />
 
     <!-- social media -->
