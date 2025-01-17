@@ -1,4 +1,3 @@
-/* TODO: consider creating <Button> and <GradientText> components */
 a,
 .btn {
   @apply transition-colors duration-200;
@@ -9,4 +8,38 @@ a,
 .gradient-text {
   @apply bg-clip-text text-transparent;
   @apply bg-gradient-to-br from-blue-400 via-purple-400 to-pink-500;
+}
+
+.button {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  padding: 1rem 3rem;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  color: white;
+  transition: background-color 0.3s;
+  background-color: #0056b3;
+}
+
+.button:disabled {
+  background-color: #C0DDF3;
+  cursor: not-allowed;
+}
+
+.button:disabled:hover {
+  background-color: #C0DDF3;
+}
+
+.whatsapp {
+  background-color: #25d366;
+}
+
+.whatsapp:hover {
+  transition: background-color 0.3s;
+  background-color: #128c7e;
 }

@@ -1,0 +1,58 @@
+---
+import type { ServiceItem } from "~/types";
+
+const services: Array<ServiceItem> = [
+  {
+    title: "Diseño Web",
+    description:
+      "Diseñamos tu sitio web a medida, con un diseño único y personalizado.",
+    image: "/src/assets/splash-bg.webp",
+  },
+  {
+    title: "Desarrollo de Aplicaciones",
+    description:
+      "Creamos aplicaciones móviles y de escritorio adaptadas a tus necesidades.",
+    image: "/src/assets/splash-bg.webp",
+  },
+  {
+    title: "Marketing Digital",
+    description:
+      "Te ayudamos a posicionar tu marca y aumentar tu presencia en línea.",
+    image: "/src/assets/splash-bg.webp",
+  },
+  {
+    title: "SEO",
+    description:
+      "Mejoramos el posicionamiento de tu sitio web en los motores de búsqueda.",
+    image: "/src/assets/splash-bg.webp",
+  },
+  {
+    title: "Consultoría Tecnológica",
+    description:
+      "Ofrecemos asesoramiento experto para optimizar tus procesos tecnológicos.",
+    image: "/src/assets/splash-bg.webp",
+  },
+  {
+    title: "E-commerce",
+    description:
+      "Desarrollamos tiendas en línea para que puedas vender tus productos.",
+    image: "/src/assets/splash-bg.webp",
+  }
+];
+---
+
+<div id="services" class="flex flex-col items-center gap-4">
+  <h2 class="gradient-text text-center font-extrabold tracking-tight text-6xl">Servicios</h2>
+  <p class="text-center max-w-lg font-extrabold text-2xl">Estos son los servicios que te ofrecemos.</p>
+  <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {
+      services.map(({ title, description, image }) => (
+        <li class="flex flex-col items-center gap-4 border border-default bg-offset p-6">
+          <img src={image} alt={title} />
+          <p class="text-center font-extrabold">{title}</p>
+          <p class="text-center text-offset text-sm">{description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</div>

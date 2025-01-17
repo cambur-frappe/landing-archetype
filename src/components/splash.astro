@@ -1,6 +1,5 @@
 ---
 import { Icon } from "astro-icon/components";
-import Button from "./button.astro";
 import HeroImage from "~/components/hero-image.astro";
 import { copies } from "~/content/copies";
 ---
@@ -9,9 +8,9 @@ import { copies } from "~/content/copies";
   <div id="splash-bg" class="absolute inset-0 opacity-40">
     <HeroImage />
   </div>
-  <div class="relative grid h-full justify-center place-items-center">
+  <div class="relative flex justify-center h-full">
     <h2
-      class="flex flex-col items-center gap-2 self-end sm:gap-4 sm:self-auto sm:justify-self-end"
+      class="flex flex-col items-center justify-center gap-12"
     >
       <Icon name="twemoji:shaved-ice" class="size-20 text-white md:size-32" />
       <div
@@ -19,13 +18,16 @@ import { copies } from "~/content/copies";
       >
         {copies.h1}
       </div>
-      <div class="max-w-xl text-center font-extrabold text-2xl" style="color: #f9fafb;">
+      <div
+        class="max-w-xl text-center font-extrabold text-2xl"
+        style="color: #f9fafb;"
+      >
         {copies.splashCopy}
       </div>
-      <Button type="whatsapp" />
+
+      <a href="tel:" class="button text-2xl">Llámanos</a>
     </h2>
-    </div>
-  </div>    
+  </div>
 </section>
 
 <noscript>
@@ -35,4 +37,3 @@ import { copies } from "~/content/copies";
     }
   </style>
 </noscript>
-
