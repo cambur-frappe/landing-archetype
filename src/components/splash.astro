@@ -7,23 +7,20 @@ import HeroImage from "~/components/hero-image.astro";
     <HeroImage />
   </div>
   <div class="relative flex justify-center h-full">
-    <h2
-      class="flex flex-col items-center justify-center gap-8"
-    >
-      <img src="/images/logock.png" alt="C&K Limpieza y Mantenimiento" />
-      <div
-        class="gradient-text text-center font-extrabold tracking-tighter text-6xl md:text-6xl"
-      >
-        C&K Limpieza y Mantenimiento
+    <h2 class="flex flex-col items-center justify-center gap-4 sm:gap-8 px-4">
+      <img 
+        src="/images/logock.png" 
+        alt="C&K Limpieza y Mantenimiento" 
+        class="w-32 sm:w-auto"
+      />
+      <div class="gradient-text text-center font-extrabold tracking-tighter text-4xl sm:text-5xl md:text-6xl">
+        C&K Limpieza y<br class="sm:hidden"/> Mantenimiento
       </div>
-      <div
-        class="max-w-xl text-center font-extrabold text-2xl italic"
-        style="color: #f9fafb;"
-      >
+      <div class="max-w-xl text-center font-extrabold text-xl sm:text-2xl italic text-gray-50">
         Confianza, tranquilidad y satisfacción
       </div>
 
-      <a href="tel:+34622423007" class="button text-2xl">Llámanos</a>
+      <a href="tel:+34622423007" class="button text-xl sm:text-2xl mt-4">Llámanos</a>
     </h2>
   </div>
 </section>

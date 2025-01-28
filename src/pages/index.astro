@@ -7,6 +7,8 @@ import ServicesSection from "~/components/services-section.astro";
 import Splash from "~/components/splash.astro";
 import OurWorkSection from "~/components/our-work-section.astro";
 import "~/styles/index.css";
+import HeroSection from "~/components/hero-section.astro";
+import CommitmentSection from "~/components/commitment-section.astro";
 
 const { generator } = Astro;
 const site = "C&K Limpieza y Mantenimiento";
@@ -64,9 +66,11 @@ const description =
     <Header />
     <Splash />
     <div class="space-y-24 px-8 py-32">
-      <ContactSection />
+      <HeroSection />
       <ServicesSection />
+      <CommitmentSection />
       <OurWorkSection />
+      <ContactSection />
     </div>
     <Footer />
   </body>

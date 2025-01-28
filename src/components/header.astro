@@ -107,7 +107,11 @@ const navItems: Array<NavItem> = [
 
   document.addEventListener("scroll", () => {
     const d = page.clientHeight - page.scrollTop - header.offsetHeight;
-    header.classList.toggle("fixed-header", d < 0);
+    if (d < 0) {
+      header.classList.add("fixed-header", "bg-white/80", "backdrop-blur-sm");
+    } else {
+      header.classList.remove("fixed-header", "bg-white/80", "backdrop-blur-sm");
+    }
   });
 
   menu.addEventListener("click", (event) => {
@@ -128,7 +132,7 @@ const navItems: Array<NavItem> = [
 <style>
   .fixed-header {
     @apply fixed bottom-auto top-0;
-    @apply border-default bg-default text-default;
+    @apply text-default;
   }
   .modal.is-open {
     @apply block;

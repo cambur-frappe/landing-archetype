@@ -1,16 +1,153 @@
 ---
-
+const galleryItems = [
+{
+    type: 'video',
+    videoUrl: '/videos/limpieza-espejo.mp4',
+    alt: 'Video limpieza de espejo'
+  },
+  {
+    type: 'image',
+    thumbnail: '/images/limpieza-cristales.jpeg',
+    fullSize: '/images/limpieza-cristales.jpeg',
+    alt: 'Limpieza de cristales'
+  },
+  {
+    type: 'video',
+    videoUrl: '/videos/limpieza-cristales-ext.mp4',
+    thumbnail: '/images/cristales-ext-thumb.png',
+    alt: 'Video limpieza de cristales exterior'
+  },
+  {
+    type: 'image',
+    thumbnail: '/images/limpieza-cristales1.jpeg',
+    fullSize: '/images/limpieza-cristales1.jpeg',
+    alt: 'Servicio de limpieza de cristales 1'
+  },
+  {
+    type: 'image',
+    thumbnail: '/images/limpieza-cristales2.jpeg',
+    fullSize: '/images/limpieza-cristales2.jpeg',
+    alt: 'Servicio de limpieza de cristales 2'
+  },
+  {
+    type: 'video',
+    videoUrl: '/videos/limpieza-cristales-ext1.mp4',
+    alt: 'Video limpieza de cristales exterior 1'
+  },
+  {
+    type: 'image',
+    thumbnail: '/images/diseno-jardin.jpeg',
+    fullSize: '/images/diseno-jardin.jpeg',
+    alt: 'Diseño de jardín'
+  },
+];
 ---
 
 <div class="flex flex-col items-center gap-4">
   <h2 id="our-work" class="gradient-text text-center font-extrabold tracking-tight text-6xl">
     Nuestro trabajo
   </h2>
-  <iframe
-    class="w-full md:w-2/3 h-96 mt-4"
-    src="https://www.youtube-nocookie.com/embed/ctyuUYwtDTQ?si=qcVxzuXj2vcdToif&controls=1&loop=0&mute=1"
-    title="YouTube video player"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen></iframe>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-6xl p-4">
+    {galleryItems.map((item) => (
+      <div class="gallery-item cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+        {item.type === 'image' ? (
+          <img 
+            src={item.thumbnail} 
+            alt={item.alt}
+            class="w-full h-64 object-cover"
+            data-type="image"
+            data-full={item.fullSize}
+          />
+        ) : (
+          <div class="relative">
+            <video 
+              class="w-full h-64 object-cover"
+              data-type="video"
+              data-full={item.videoUrl}
+              muted
+              preload="metadata"
+              poster={item.thumbnail}
+            >
+              <source src={item.videoUrl} type="video/mp4" />
+            </video>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-16 h-16 bg-black bg-opacity-50 rounded-full flex items-center justify-center">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
 </div>
+
+<script>
+  // Crear el modal dinámicamente
+  const modalHTML = `
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99999;">
+      <button id="closeModal" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300">&times;</button>
+      <div id="modalContent" class="max-w-[90vw] max-h-[90vh]">
+      </div>
+    </div>
+  `;
+
+  // Insertar el modal al final del body
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+  const modal = document.getElementById('modal');
+  const modalContent = document.getElementById('modalContent');
+  const closeModal = document.getElementById('closeModal');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  function openModal(content: string) {
+    if (modal && modalContent) {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      modalContent.innerHTML = content;
+    }
+  }
+
+  function closeModalHandler() {
+    if (modal && modalContent) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      modalContent.innerHTML = '';
+    }
+  }
+
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const mediaElement = item.querySelector('img, video') as HTMLImageElement | HTMLVideoElement;
+      const type = mediaElement?.dataset.type;
+      const fullSrc = mediaElement?.dataset.full;
+
+      if (type === 'image') {
+        const imgElement = mediaElement as HTMLImageElement;
+        openModal(`<img src="${fullSrc}" alt="${imgElement.alt}" class="max-w-full max-h-[85vh] object-contain">`);
+      } else if (type === 'video') {
+        openModal(`
+          <video
+            class="w-[90vw] h-[80vh]"
+            src="${fullSrc}"
+            controls
+            autoplay
+            muted
+          ></video>
+        `);
+      }
+    });
+  });
+
+  closeModal?.addEventListener('click', closeModalHandler);
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModalHandler();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModalHandler();
+  });
+</script>
